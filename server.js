@@ -15,7 +15,21 @@ app.use((req, res, next) => {
   next();
 });
 
+// app.use('/user/settings', (req, res, next) => {
+//   if(!res.userCheck()) res.show('unknown-user.html');
+//   next();
+// });
+
+// app.use('/user/panel', (req, res, next) => {
+//   if(!res.userCheck()) res.show('unknown-user.html');
+//   next();
+// });
+
 app.get(('/'), (req, res) => {
+  res.show('index.html')
+});
+
+app.get(('/home'), (req, res) => {
   res.show('index.html')
 });
 
@@ -25,12 +39,12 @@ app.get('/about', (req, res) => {
 
 app.get('/user/settings', (req, res) => {
   if(res.userCheck()) res.show('/user/settings.html');
-  else res.send('<h1>You need to be logged in!</h1>')
+  else res.show('unknown-user.html')
 });
 
 app.get('/user/panel', (req, res) => {
-  if(res.userCheck()) res.show('/user/settings.html');
-  else res.send('<h1>You need to be logged in!</h1>')
+  if(res.userCheck()) res.show('/user/panel.html');
+  else res.show('unknown-user.html')
 });
 
 app.use((req, res) => {
