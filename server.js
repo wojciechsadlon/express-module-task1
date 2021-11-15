@@ -18,6 +18,7 @@ app.use((req, res, next) => {
 
 app.use('/user', (req, res, next) => {
   if(userCheck()) return res.show('unknown-user.html');
+  next()
 });
 
 app.get(('/'), (req, res) => {
